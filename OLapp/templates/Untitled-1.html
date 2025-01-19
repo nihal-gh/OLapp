@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ORPHAN LINK</title>
+    <!--<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="\Orphanage-Helping-master\Orphanage-Helping-master\css\loginstyle.css" />
+    
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    -->
+    <style>
+      /* General styling for body */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Header styling */
+      header {
+        background-color: #007bff;
+        color: white;
+        padding: 15px 0;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 36px;
+      }
+
+      header nav ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      header nav ul li {
+        display: inline;
+        margin: 0 10px;
+      }
+
+      header nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      /* Styling the login form container */
+      .login-wrap {
+        width: 100%;
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+
+      .login-html {
+        text-align: center;
+      }
+
+      .tab {
+        font-size: 22px;
+        margin: 0 15px;
+        cursor: pointer;
+        color: #333;
+      }
+
+      .group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+
+      .group .label {
+        font-size: 14px;
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .group .input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
+      }
+
+      .group .input:focus {
+        border-color: #007bff;
+      }
+
+      .button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Horizontal line styling */
+      .hr {
+        border: 0;
+        border-top: 1px solid #eee;
+        margin: 20px 0;
+      }
+
+      .foot-lnk {
+        text-align: center;
+        font-size: 14px;
+        color: #007bff;
+      }
+
+      .foot-lnk a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .foot-lnk a:hover {
+        text-decoration: underline;
+      }
+
+      /* Styling for media queries to ensure responsiveness */
+      @media (max-width: 768px) {
+        .login-wrap {
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 28px;
+        }
+
+        header nav ul li a {
+          font-size: 16px;
+        }
+
+        .tab {
+          font-size: 18px;
+        }
+      }
+      /* Centering the form and its elements */
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Styling the form inputs */
+      .contact-form .form-group {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .contact-form input[type="text"],
+      .contact-form input[type="number"],
+      .contact-form input[type="email"],
+      .contact-form textarea {
+        width: 100%;
+        max-width: 400px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        font-size: 16px;
+      }
+
+      /* Adding focus effect */
+      .contact-form input[type="text"]:focus,
+      .contact-form input[type="number"]:focus,
+      .contact-form input[type="email"]:focus,
+      .contact-form textarea:focus {
+        border-color: #e64a19;
+        box-shadow: 0px 0px 5px #e64a19;
+      }
+
+      /* Styling the submit button */
+      .contact-form button[type="submit"] {
+        width: 100%;
+        max-width: 400px;
+        padding: 10px;
+        background-color: #e64a19;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      /* Button hover effect */
+      .contact-form button[type="submit"]:hover {
+        background-color: #ff906e;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f1faee;
+        color: #1d3557;
+      }
+
+      header {
+        background-color: #ff6f61;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+      }
+
+      nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      nav ul li {
+        display: inline;
+        margin: 0 10px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+
+      nav ul li a:hover {
+        text-decoration: underline;
+      }
+
+      .main-content {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .image-intro {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .image-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image-container img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .intro-container {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .intro h2 {
+        color: #e76f51;
+      }
+
+      .intro-text {
+        font-size: larger;
+        word-spacing: 10px;
+        letter-spacing: 2px;
+        line-height: 25px;
+      }
+
+      .features,
+      .services,
+      .testimonials,
+      .contact,
+      .activities {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #dddddd;
+        text-align: left;
+        background-color: #ffffff;
+      }
+
+      .features h2 {
+        color: #264653;
+      }
+
+      .services {
+        background-color: #e0f7fa;
+      }
+
+      .services h2 {
+        color: #00796b;
+      }
+
+      .testimonials {
+        background-color: #f1f8e9;
+      }
+
+      .testimonials h2 {
+        color: #33691e;
+      }
+
+      .contact {
+        background-color: #fff3e0;
+      }
+
+      .contact h2 {
+        color: #e64a19;
+      }
+
+      .features ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .features ul li {
+        margin: 10px 0;
+      }
+
+      footer {
+        background-color: #f4a261;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10%;
+      }
+
+      .footer-left,
+      .footer-middle,
+      .footer-right {
+        flex: 1;
+      }
+
+      .footer-right {
+        text-align: right;
+      }
+
+      .social-media {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .social-media a {
+        color: white;
+        text-decoration: none;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      @media only screen and (max-width: 768px) {
+        .main-content {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .image-intro {
+          flex-direction: column;
+          align-items: center;
+          gap: 0;
+        }
+
+        .footer-content {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .footer-right {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ORPHAN LINK</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="adoption.html">Adoption</a></li>
+          <li><a href="{{ url_for('donations') }}">Donations</a></li>
+          <li><a href="#">Staff</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!--Header-Starts-Here-->
+    <div class="header" id="home">
+      <div class="container" style="width: 78%">
+        <span class="menu"> </span>
+        <script>
+          document
+            .querySelector("span.menu")
+            .addEventListener("click", function () {
+              document.querySelector("ul.navig").classList.toggle("show");
+            });
+        </script>
+      </div>
+    </div>
+    <!--Header-Ends-Here-->
+    <!--login-form-starts-Here--><br /><br />
+    <div class="login-wrap">
+      <div class="login-html">
+        <input
+          id="tab-1"
+          type="radio"
+          name="tab"
+          class="sign-in"
+          checked
+        /><label for="tab-1" class="tab">Sign In</label>
+        <input id="tab-2" type="radio" name="tab" class="sign-up" /><label
+          for="tab-2"
+          class="tab"
+          >Sign Up</label
+        >
+        <div class="login-form">
+          <div class="sign-in-htm">
+            <form action="login.php" method="post">
+              <div class="group">
+                <label for="email" class="label">Email</label>
+                <input id="email" type="text" class="input" name="email" />
+              </div>
+              <div class="group">
+                <label for="pass" class="label">Password</label>
+                <input
+                  id="pass"
+                  type="password"
+                  class="input"
+                  data-type="password"
+                  name="pass"
+                />
+              </div>
+              <div class="group">
+                <input type="submit" class="button" value="Sign In" />
+              </div>
+            </form>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+              <a href="forgot.html">Forgot Password?</a>
+            </div>
+          </div>
+          <div class="sign-up-htm">
+            <form action="signup.php" method="post">
+              <br /><br /><br />
+              <div class="group">
+                <label for="email" class="label">Email Address</label>
+                <input id="email" type="text" class="input" name="email" />
+              </div>
+              <div class="group">
+                <label for="pass" class="label">Password</label>
+                <input
+                  id="pass"
+                  type="password"
+                  class="input"
+                  data-type="password"
+                  name="pass"
+                />
+              </div>
+              <div class="group">
+                <label for="rpass" class="label">Confirm Password</label>
+                <input
+                  id="rpass"
+                  type="password"
+                  class="input"
+                  data-type="password"
+                  name="rpass"
+                />
+              </div>
+              <div class="group">
+                <input type="submit" class="button" value="Sign Up" />
+              </div>
+            </form>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+              <label for="tab-1"
+                ><a href="login.html">Already Member? Login here</a></label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--login-form-Ends-Here-->
+    <!--footer-Starts-Here-->
+    <div class="footer">
+      <div class="container">
+        <div class="footer-main">
+          <div class="col-md-4 footer-left">
+            <h3>Follow us</h3>
+            <ul>
+              <li>
+                <a href="#" class="active"><span class="fb"> </span></a>
+              </li>
+              <li>
+                <a href="#"><span class="twit"> </span></a>
+              </li>
+              <li>
+                <a href="#"><span class="c"> </span></a>
+              </li>
+              <li>
+                <a href="#"><span class="g"> </span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 footer-right">
+            <h3>Location</h3>
+            <ul>
+              <li>
+                <span class="ads"> </span>
+                <p>SHIMOGA.</p>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 footer-right">
+            <h3>Contact us</h3>
+            <ul>
+              <li>
+                <span class="ph"> </span>
+                <p>Phone :+1 871 234 5678</p>
+              </li>
+              <li>
+                <span class="mail"> </span>
+                <p><a href="mailto:example@email.com">user@example.com</a></p>
+              </li>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <a href="#home" id="toTop" class="scroll" style="display: block">
+        <span id="toTopHover" style="opacity: 1"> </span>
+      </a>
+    </div>
+    <!--footer-Ends-Here-->
+
+    <!-- javascript for login -->
+    <script type="text/javascript">
+      function ValidateUser() {
+        var pword = new RegExp(/^[a-zA-Z0-9]{4,100}$/);
+        var password = document.getElementById("pass").value;
+        var email = document.getElementById("email").value;
+        var emailPattern = new RegExp(
+          /^[A-Za-z0-9_.]{2,100}@[A-Za-z0-9.-]{2,100}\.[A-Za-z]{2,100}$/
+        );
+
+        if (pword.test(password) && emailPattern.test(email)) {
+          return true;
+        } else {
+          alert("Incorrect Password or Username");
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>

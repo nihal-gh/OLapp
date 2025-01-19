@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/teamstyle.css') }}"
+    />
+
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+
+      form {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #f4f7f8;
+        border-radius: 8px;
+      }
+
+      h1 {
+        margin: 0 0 30px;
+        text-align: center;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        font-size: 16px;
+        height: auto;
+        margin: 0;
+        outline: 0;
+        padding: 15px;
+        width: 100%;
+        background-color: #e8eeef;
+        color: #8a97a0;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+        margin-bottom: 30px;
+      }
+
+      button {
+        padding: 15px 30px;
+        color: #fff;
+        background-color: #f25939;
+        font-size: 18px;
+        text-align: center;
+        border-radius: 5px;
+        width: 100%;
+        border: 1px solid #f25939;
+        border-width: 1px 1px 3px;
+        margin-bottom: 10px;
+      }
+      button:hover {
+        background-color: #1b6c86;
+        border: 0;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .footer-content {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #8a97a0;
+      }
+
+      .forgot-password {
+        display: block;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #f25939;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo-container">
+          <img src="logo.png" alt="Logo" />
+        </div>
+        <ul class="nav-menu">
+          <li><a href="Orphanlink.html">Home</a></li>
+          <li><a href="adoption.html">Adoption</a></li>
+          <li><a href="orphanages.html">Orphanages</a></li>
+          <li><a href="donation-cards.html">Donations</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li class="donate-button"><a href="Donations.html">Donate</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="row">
+      <div class="col-md-12">
+        <form action="submit_login.php" method="post">
+          <h1>Login</h1>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+
+          <a href="#" class="forgot-password">Forgot Password?</a>
+
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <p>2024 OrphanLink. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script defer src="hfmanager.js"></script>
+  </body>
+</html>

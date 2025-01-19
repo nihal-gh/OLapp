@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Adoption Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/teamstyle.css') }}"
+    />
+
+    <style>
+      *,
+      *:before,
+      *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      form {
+        max-width: 1000px;
+        margin: 10px auto;
+        padding: 20px;
+        background: #f4f7f8;
+        border-radius: 8px;
+      }
+
+      h1 {
+        margin: 0 0 30px 0;
+        text-align: center;
+        color: #292929;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="file"],
+      input[type="date"],
+      textarea,
+      select {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        font-size: 16px;
+        height: auto;
+        margin: 0;
+        outline: 0;
+        padding: 15px;
+        width: 100%;
+        background-color: #e8eeef;
+        color: #8a97a0;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+        margin-bottom: 30px;
+      }
+
+      button {
+        padding: 15px 30px;
+        color: #fff;
+        background-color: #f25939; /* Button color from palette */
+        font-size: 18px;
+        text-align: center;
+        font-style: normal;
+        border-radius: 5px;
+        width: 100%;
+        border: 1px solid #f25939; /* Button border color */
+        border-width: 1px 1px 3px;
+        box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+        margin-bottom: 10px;
+      }
+      button:hover {
+        background-color: #1b6c86; /* Darker button color on hover */
+        border: 0;
+      }
+
+      fieldset {
+        margin-bottom: 30px;
+        border: none;
+        color: #292929;
+      }
+
+      legend {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      label.light {
+        font-weight: 300;
+        display: inline;
+      }
+      .number {
+        background-color: #f25939; /* Matching color */
+        color: #fff;
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        font-size: 0.8em;
+        margin-right: 4px;
+        line-height: 30px;
+        text-align: center;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+        border-radius: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <!-- Logo Container -->
+        <div class="logo-container">
+          <div class="logo-container">
+            <img
+              src="{{ url_for('static', filename='images/logo.png') }}"
+              alt="Logo"
+            />
+          </div>
+        </div>
+        <!-- Navigation Menu -->
+        <ul class="nav-menu">
+          <li><a href="Orphanlink.html">Home</a></li>
+          <li><a href="adoption.html">Adoption</a></li>
+          <li><a href="orphanages.html">Orphanages</a></li>
+          <li><a href="donation-cards.html">Donations</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li class="donate-button"><a href="Donations.html">Donate</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1><br /><br />Adoption</h1>
+    <p
+      style="
+        color: #292929;
+        font-size: 130%;
+        letter-spacing: 2px;
+        word-spacing: 8px;
+        line-height: 1.6;
+        padding: auto;
+        margin: 90px 150px 90px;
+        text-align: center;
+      "
+    >
+      We are by no means experts in the matter but in our experience and
+      understanding
+      <strong>
+        in-country and inter-country adoption in India has been very difficult
+        in the past</strong
+      >
+      but new laws are being implemented to streamline this process. Estimates
+      for the number of orphans in India varies from 16 million to 30 million,
+      but only about 2,500 orphans were adopted last year, down from 5,700 four
+      years ago. The Ministry of Women &amp; Child Development’s autonomous body
+      <a href="http://cara.nic.in/" target="_blank" rel="noopener">
+        Central Adoption Resource Authority (CARA)</a
+      >
+      now handles all adoption inquiries, applications and adoptions within
+      India. Prospective parents are should register with the authority, whose
+      automated system will match them with children.
+    </p>
+    <div class="row">
+      <div class="col-md-12">
+        <form action="submit_adoption_form.php" method="post">
+          <h1>Adoption Application Form</h1>
+
+          <fieldset>
+            <legend><span class="number">1</span> Personal Information</legend>
+
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required />
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required />
+
+            <label for="date_of_birth">Date of Birth:</label>
+            <p style="color: red">*must be more than 24 years</p>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              min="1944-09-20"
+              max="2000-09-20"
+              required
+            />
+            <label for file="file">Upload a ID</label>
+            <input type="file" name="fileupload" />
+
+            <label for="Gender">Select Your Gender</label>
+            <select id="gender" name="gender">
+              <option value="selcted">select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <legend><span class="number">2</span> Adoption Preferences</legend>
+
+            <label for="child_age">Preferred Adoption:</label>
+            <select id="child_age" name="child_age">
+              <option value="baby">Baby</option>
+              <option value="children">children</option>
+              <option value="teenager">Teenager's</option>
+              <option value="seniors">Seniors</option>
+            </select>
+
+            <label for="reason">Reason for Adoption:</label>
+            <textarea id="reason" name="reason" rows="4" required></textarea>
+
+            <label for="additional_info">Additional Information:</label>
+            <textarea
+              id="additional_info"
+              name="additional_info"
+              rows="4"
+            ></textarea>
+          </fieldset>
+
+          <button type="submit">Submit Application</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>Contact Us: +91 9502188485</p>
+          <p>Mail us: <a href="mailto:yashdevineni7@gmail.com">yashwanth</a></p>
+        </div>
+        <div class="footer-middle">
+          <div class="social-media">
+            <a href="https://www.instagram.com" target="_blank">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                alt="Instagram"
+                width="24"
+                height="24"
+              />
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/X_logo_2023_%28white%29.png/900px-X_logo_2023_%28white%29.png?20230728230735"
+                alt="Twitter"
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <p>2024 OrphanLink. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script defer src="hfmanager.js"></script>
+  </body>
+</html>

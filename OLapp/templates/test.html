@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gallery</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Barlow:400,500,700");
+
+      /* Color Variables */
+      :root {
+        --white: #fff;
+        --black: #2e2e2e;
+        --gray: #787878;
+        --highlight: #ea8478;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Barlow", sans-serif;
+        font-size: 1.125rem;
+        line-height: 1.5;
+        color: var(--gray);
+        background: var(--white);
+        text-rendering: optimizeLegibility;
+      }
+
+      a {
+        color: var(--gray);
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      a:hover {
+        color: var(--black);
+      }
+
+      .gallery {
+        padding: 0 0 4rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .img-container {
+        position: relative;
+        width: auto;
+        height: auto;
+        margin: 10px;
+        display: inline-block;
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .img-container:hover img {
+        transform: scale(1.05);
+      }
+
+      .img-content-hover {
+        position: absolute;
+        font-size: 40px; /* Max text size */
+        font-weight: bold;
+        color: var(--black);
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        background: transparent;
+        transform: translate(-100%, 100%);
+      }
+
+      .img-container:hover .img-content-hover {
+        opacity: 1;
+        display: block;
+      }
+
+      @media (max-width: 1024px) {
+        .img-container {
+          height: 100%;
+        }
+
+        .img-content-hover {
+          display: none;
+        }
+
+        .img-container:hover .img-content-hover {
+          display: block;
+        }
+      }
+
+      .container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .column-xs-12 {
+        width: 100%;
+      }
+
+      .column-md-4 {
+        width: 30%;
+      }
+
+      .column-md-6 {
+        width: 45%;
+      }
+
+      @media (max-width: 768px) {
+        .column-md-4 {
+          width: 100%;
+        }
+
+        .column-md-6 {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="gallery">
+      <div class="container">
+        <div class="column-xs-12 column-md-4">
+          <figure class="img-container">
+            <img
+              src="https://media.rnztools.nz/rnz/image/upload/s--weGl2dE6--/c_scale,f_auto,q_auto,w_1050/v1643558939/4NFW4K4_image_crop_75671?_a=BACCd2AD"
+            />
+            <span class="img-content-hover">
+              <h2 class="title">Smart Watch</h2>
+              <h3 class="category">Showcase</h3>
+            </span>
+          </figure>
+        </div>
+        <div class="column-xs-12 column-md-4">
+          <figure class="img-container">
+            <img
+              src="https://volunteeringwithindia.org/wp-content/uploads/2017/05/IMG_2313.jpg"
+            />
+            <span class="img-content-hover">
+              <h2 class="title">Camera Film</h2>
+              <h3 class="category">Showcase</h3>
+            </span>
+          </figure>
+        </div>
+        <div class="column-xs-12 column-md-4">
+          <figure class="img-container">
+            <img
+              src="https://cdn.pixabay.com/photo/2023/12/12/15/47/welding-8445458_1280.jpg"
+            />
+            <span class="img-content-hover">
+              <h2 class="title">Coffee</h2>
+              <h3 class="category">Showcase</h3>
+            </span>
+          </figure>
+        </div>
+        <div class="column-xs-12 column-md-6">
+          <figure class="img-container">
+            <img src="https://wallpapercave.com/wp/wp10914903.jpg" />
+            <span class="img-content-hover">
+              <h2 class="title">Phone</h2>
+              <h3 class="category">Showcase</h3>
+            </span>
+          </figure>
+        </div>
+        <div class="column-xs-12 column-md-6">
+          <figure class="img-container">
+            <img
+              src="https://cdn.pixabay.com/photo/2024/07/08/17/54/model-8881740_1280.jpg"
+            />
+            <span class="img-content-hover">
+              <h2 class="title">Keyboard</h2>
+              <h3 class="category">Showcase</h3>
+            </span>
+          </figure>
+        </div>
+        <div class="column-xs-12">
+          <figure class="img-container">
+            <img
+              src="https://assets.vogue.in/photos/65f8547fa51ab377e1817c91/3:4/w_2007,h_2676,c_limit/Diljit%20Dosanjh%20joins%20Ed%20Sheeran%20in%20a%20surprise%20act%20sending%20the%20crowd%20in%20a%20frenzy%20at%20Ed%20Sheeran_%20+%20-%20%C3%B7%20x%20Tour%20co-promoted%20by%20BookMyShow%20Live_RVR16-16212717.jpg"
+            />
+            <span class="img-content-hover">
+              <h2 class="title">Wrist Watch</h2>
+              <h3 class="category">Showcase</h3>
+            </span>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <script>
+      const imgContent = document.querySelectorAll(".img-content-hover");
+
+      function showImgContent(e) {
+        imgContent.forEach((caption) => {
+          const rect = caption.parentElement.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          caption.style.transform = `translate3d(${x + 15}px, ${y + 15}px, 0)`;
+        });
+      }
+
+      document.addEventListener("mousemove", showImgContent);
+    </script>
+  </body>
+</html>

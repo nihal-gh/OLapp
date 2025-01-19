@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive India Map</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/teamstyle.css') }}"
+    />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      h1 {
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Interactive Map of India</h1>
+    <div>
+      <img
+        src="india_map.png"
+        width="600"
+        height="600"
+        border="5"
+        usemap="#Map"
+        alt="India Map"
+      />
+      <map name="Map" id="Map">
+        <area
+          shape="poly"
+          coords="167,103,188,90,210,98,225,103,227,119,219,126,207,132,202,140,168,105"
+          href="https://carings.wcd.gov.in/parents/searchagencynew.aspx?state=himachal%20pradesh"
+          target="_blank"
+          alt="Himachal Pradesh"
+        />
+        <area
+          shape="poly"
+          coords="130,145,150,150,169,150,191,138,164,108,153,113,146,125,132,145"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=punjab"
+          target="_blank"
+          alt="Punjab"
+        />
+        <area
+          shape="poly"
+          coords="207,142,221,128,232,125,253,141,268,148,261,159,253,174,242,176,221,160,207,142"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=uttarakhand"
+          target="_blank"
+          alt="Uttarakhand"
+        />
+        <area
+          shape="poly"
+          coords="205,211,200,171,201,144,255,179,287,195,330,207,328,216,332,229,337,239,329,250,321,263,310,271,300,258,253,249,232,249,223,255,223,263,229,226"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=uttar%20pradesh"
+          target="_blank"
+          alt="Uttar Pradesh"
+        />
+        <area
+          shape="poly"
+          coords="332,260,367,259,385,260,405,244,408,223,370,219,345,213,334,206,331,262"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=bihar"
+          target="_blank"
+          alt="Bihar"
+        />
+        <area
+          shape="poly"
+          coords="131,310,167,327,187,319,204,320,230,321,255,323,262,316,277,300,290,287,282,279,304,274,267,256,226,254,215,253,222,236,209,218,177,230,186,250,176,264,166,267,159,258,149,253,142,265,137,282,131,297,135,312"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=madhya%20pradesh"
+          target="_blank"
+          alt="Madhya Pradesh"
+        />
+        <area
+          shape="poly"
+          coords="89,253,108,270,126,284,145,256,149,250,159,254,184,244,200,212,190,198,159,182,143,156,125,147,98,170,77,186,60,183,38,199,52,212,60,226,70,247,90,251"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=rajasthan"
+          target="_blank"
+          alt="Rajasthan"
+        />
+        <area
+          shape="poly"
+          coords="61,256,56,257,29,258,11,267,30,281,49,286,27,296,40,319,69,329,89,300,100,312,103,337,118,330,124,308,128,288,86,254,59,257"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=gujarat"
+          target="_blank"
+          alt="Gujarat"
+        />
+        <area
+          shape="poly"
+          coords="95,345,119,332,126,310,170,328,197,321,252,323,262,356,259,368,252,380,228,362,206,363,189,386,152,409,118,430,105,420,95,346"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=maharashtra"
+          target="_blank"
+          alt="Maharashtra"
+        />
+        <area
+          shape="poly"
+          coords="119,440,196,383,190,431,180,451,187,471,204,478,216,492,209,502,190,504,186,518,175,517,149,513,133,497"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=karnataka"
+          target="_blank"
+          alt="Karnataka"
+        />
+        <area
+          shape="poly"
+          coords="201,385,207,373,215,364,227,358,247,369,255,379,263,385,272,393,286,405,263,416,241,424,231,428,221,435,211,438,199,435,197,411"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=telangana"
+          target="_blank"
+          alt="Telangana"
+        />
+        <area
+          shape="poly"
+          coords="188,446,189,436,198,436,210,439,226,435,253,421,261,419,278,409,295,392,315,384,330,372,344,379,305,409,283,423,270,438,252,449,253,467,251,485,239,491,226,496,214,484,196,476,182,459"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=andhra%20pradesh"
+          target="_blank"
+          alt="Andhra Pradesh"
+        />
+        <area
+          shape="poly"
+          coords="133,503,154,537,166,573,174,586,182,566,181,545,170,524,133,503"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=kerala"
+          target="_blank"
+          alt="Kerala"
+        />
+        <area
+          shape="poly"
+          coords="170,522,200,504"
+          href="#"
+          alt="Unavailable State"
+        />
+        <area
+          shape="poly"
+          coords="164,517,181,520,198,506,222,491,252,484,259,494,243,519,241,544,235,551,219,569,211,575,195,590,179,585,181,544,168,518"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=tamil%20nadu"
+          target="_blank"
+          alt="Tamil Nadu"
+        />
+        <area
+          shape="poly"
+          coords="277,393,312,384,333,377,349,370,377,356,391,344,392,327,412,316,392,307,378,306,372,302,361,314,355,306,344,307,319,306,310,329,304,331,298,339,294,358,284,353,287,373,280,394"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=odisha"
+          target="_blank"
+          alt="Odisha"
+        />
+        <area
+          shape="poly"
+          coords="324,266,342,259,370,261,404,246,407,259,403,268,380,279,374,288,383,297,352,302,334,305,330,287,325,266"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=jharkhand"
+          target="_blank"
+          alt="Jharkhand"
+        />
+        <area
+          shape="poly"
+          coords="388,279,404,264,407,243,411,220,410,209,422,208,431,213,443,220,443,229,438,231,426,227,419,229,416,234,420,242,428,248,422,250,417,251,414,257,423,266,426,272,426,277,426,282,432,291,435,304,438,313,433,318,421,316,413,315,398,308,386,303,384,297,381,288,385,281"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=west%20bengal"
+          target="_blank"
+          alt="West Bengal"
+        />
+        <area
+          shape="poly"
+          coords="440,214,458,215,471,213,501,211,524,204,534,196,551,192,560,188,557,199,548,205,538,213,531,220,518,229,516,235,512,244,511,251,505,255,500,260,499,253,505,241,502,232,495,226,490,226,471,231,465,231,457,230,448,230,446,227"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=assam"
+          target="_blank"
+          alt="Assam"
+        />
+        <area
+          shape="poly"
+          coords="518,241,527,234,537,234,545,237,541,247,541,255,537,264,536,270,528,268,518,266,513,256,519,242"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=manipur"
+          target="_blank"
+          alt="Manipur"
+        />
+        <area
+          shape="poly"
+          coords="492,209,519,201,538,194,550,191,558,187,560,196,558,202,558,208,564,204,575,199,580,200,587,203,586,196,584,189,590,183,588,179,586,174,583,172,581,173,573,173,569,168,568,164,567,162,564,159,562,157,559,157,553,159,550,163,544,161,534,160,529,165,519,174,510,176,496,184,487,188,480,193,486,203"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=arunachal%20pradesh"
+          target="_blank"
+          alt="Arunachal Pradesh"
+        />
+        <area
+          shape="poly"
+          coords="548,206,540,216,528,225,520,232,517,241,531,235,543,236,546,226,551,216,549,207"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=nagaland"
+          target="_blank"
+          alt="Nagaland"
+        />
+        <area
+          shape="poly"
+          coords="449,233,447,245,461,246,484,245,496,250,501,236,493,228,473,233,451,232"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=meghalaya"
+          target="_blank"
+          alt="Meghalaya"
+        />
+        <area
+          shape="poly"
+          coords="496,257,489,262,482,265,476,273,476,284,486,291,493,279,495,269,496,257"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=tripura"
+          target="_blank"
+          alt="Tripura"
+        />
+        <area
+          shape="poly"
+          coords="500,262,508,262,516,265,523,275,523,284,518,292,519,301,516,307,508,302,503,283,500,272,498,261"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=mizoram"
+          target="_blank"
+          alt="Mizoram"
+        />
+        <area
+          shape="poly"
+          coords="413,192,422,190,424,196,427,205,427,209,416,207,408,209,407,202,411,193"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=sikkim"
+          target="_blank"
+          alt="Sikkim"
+        />
+        <area
+          shape="poly"
+          coords="141,153,149,150,154,155,158,155,165,152,174,156,175,150,182,146,189,142,195,141,199,145,194,151,190,155,192,160,192,163,189,169,184,173,184,181,191,186,199,183,196,192,189,194,185,189,179,188,172,186,166,181,163,176,159,171,159,165,152,161,146,158,142,153"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=haryana"
+          target="_blank"
+          alt="Haryana"
+        />
+        <area
+          shape="poly"
+          coords="192,184,197,181,195,176,194,171,193,166,190,167,186,171,185,177,186,183,191,183"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=delhi"
+          target="_blank"
+          alt="Delhi"
+        />
+        <area
+          shape="rect"
+          coords="246,516,354,540"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=pondicherry"
+          target="_blank"
+          alt="Pondicherry"
+        />
+        <area
+          shape="poly"
+          coords="253,379,262,382,267,390,273,392,282,386,285,375,284,357,289,354,295,353,296,343,299,337,306,331,313,326,314,315,321,306,335,305,331,300,333,293,324,280,317,274,310,273,304,275,295,278,286,280,291,289,279,303,272,305,263,318,257,330,258,341,260,354,263,361,267,365,252,379"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=chhattisgarh"
+          target="_blank"
+          alt="Chhattisgarh"
+        />
+        <area
+          shape="rect"
+          coords="9,137,104,170"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=chandigarh"
+          target="_blank"
+          alt="Chandigarh"
+        />
+        <area
+          shape="poly"
+          coords="499,423,485,437,475,462,466,495,466,545,475,562,505,587,516,592,530,592,534,588,537,571,523,522,520,486,520,470,527,458,518,437,506,424,500,424"
+          href="https://carings.wcd.gov.in/Parents/searchagencynew.aspx?state=Andaman%20and%20Nicobar%20Island"
+          target="_blank"
+          alt="Andaman and Nicobar Islands"
+        />
+      </map>
+    </div>
+  </body>
+</html>
