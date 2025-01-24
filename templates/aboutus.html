@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/teamstyle.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <style>
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .about-section {
+        padding: 60px 0;
+      }
+
+      .about-title {
+        text-align: center;
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 40px;
+        color: #596e79;
+      }
+
+      .about-item {
+        margin-bottom: 40px;
+      }
+
+      .about-heading {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #453a2f;
+      }
+
+      .about-text {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #596e79;
+        margin-bottom: 20px;
+      }
+
+      .mission-statement {
+        background-color: #f5f5dc; /* Matching the orange color */
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .mission-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mission-left,
+      .mission-right {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .mission-left {
+        text-align: left;
+      }
+
+      .mission-right {
+        text-align: right;
+      }
+
+      .mission-image-container {
+        width: 100%;
+        max-width: 500px;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      /* If you had specific styles for a form, you can adjust them here as needed */
+    </style>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <header></header>
+    <nav id="fixed-nav">
+      <!-- Logo Container -->
+      <div class="logo-container">
+        <img
+          src="{{ url_for('static', filename='images/logo.png') }}"
+          alt="Logo"
+        />
+      </div>
+
+      <!-- Navigation Menu -->
+      <ul class="nav-menu">
+        <li><a href="Orphanlink.html">Home</a></li>
+        <li><a href="adoption.html">Adoption</a></li>
+        <li><a href="orphanages.html">Orphanages</a></li>
+        <li><a href="donation-cards.html">Donations</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li class="donate-button">
+          <a href="donate.html">Donate</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section id="MissionStatement" class="mission-statement">
+      <div class="mission-container">
+        <div class="mission-left">
+          <h2
+            class="playfair-display-font"
+            style="text-align: center; font-size: 50px; color: #e64a19"
+          >
+            Mission Statement
+          </h2>
+
+          <p></p>
+          <hr class="solid" />
+
+          <div></div>
+          <p
+            style="
+              text-align: center;
+              font-size: 22px;
+              color: rgb(30, 25, 25);
+              letter-spacing: 1.5px;
+              line-height: 30px;
+            "
+          >
+            <br />
+            Our mission is to create a platform where orphanages and donors can
+            connect, ensuring that every child has access to the resources they
+            need. We are committed to providing a transparent, efficient, and
+            secure way for donors to contribute to the well-being of orphans,
+            enabling a brighter future for the children in need.
+          </p>
+        </div>
+        <div class="mission-right">
+          <div class="mission-image-container">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/5005cf7684ae9eec4f9d1861/1519661574416-OJW8U12UBCJMZO7V8Y8P/P6200340.jpg"
+              alt="Trulli"
+              width="auto"
+              height="333"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="MissionStatement" class="mission-statement">
+      <div class="mission-container">
+        <div class="mission-left">
+          <h2
+            class="playfair-display-font"
+            style="text-align: center; font-size: 50px; color: #e64a19"
+          >
+            History
+          </h2>
+
+          <p></p>
+          <hr class="solid" />
+
+          <div></div>
+          <p
+            style="
+              text-align: center;
+              font-size: 22px;
+              color: rgb(30, 25, 25);
+              letter-spacing: 1.5px;
+              line-height: 30px;
+            "
+          >
+            <br />
+            Our journey began in 2024, with a vision to bridge the gap between
+            orphanages and the community. Understanding the struggle many
+            orphanages face in raising funds, we launched this website to
+            streamline the donation process and provide detailed information
+            about orphanages across the region. Over the years, our platform has
+            grown to become a trusted resource, helping countless orphanages
+            receive the support they deserve.
+          </p>
+        </div>
+        <div class="mission-right">
+          <div class="mission-image-container">
+            <img
+              src="https://media.istockphoto.com/id/182720270/photo/indian-rural-girls.jpg?s=612x612&w=0&k=20&c=qMRFMvpe6XK1wrGDDOND0il8oCmkc1KUMnGpP-Yn8pg="
+              alt="Trulli"
+              width="auto"
+              height="333"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div id="team-section"></div>
+    </section>
+    <section id="Contact" class="contact">
+      <div class="contact-container">
+        <div class="contact-left">
+          <h2
+            class="playfair-display-font"
+            style="text-align: center; font-size: 50px"
+          >
+            Get in Touch
+          </h2>
+          <hr class="solid" />
+          <p
+            style="
+              text-align: center;
+              font-size: 22px;
+              letter-spacing: 1.5px;
+              line-height: 30px;
+            "
+          >
+            <br />If you have any questions about OrphanLink and the work we do,
+            please fill in the contact form and we will get back to you as soon
+            as possible.
+          </p>
+        </div>
+        <div class="contact-right">
+          <div class="contact-form-container">
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Name"
+                  name="Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="Phone Number"
+                  name="Phone"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email Address"
+                  name="Eaddress"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="Message"
+                  name="Message"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="popup">
+      <p>We'll get back to you!</p>
+      <button id="closePopup">Close</button>
+    </div>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>Contact Us: +91 9502188485</p>
+          <p>Mail us: <a href="mailto:yashdevineni7@gmail.com">yashwanth</a></p>
+        </div>
+        <div class="footer-middle">
+          <div class="social-media">
+            <a href="https://www.instagram.com" target="_blank">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                alt="Instagram"
+                width="24"
+                height="24"
+              />
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/X_logo_2023_%28white%29.png/900px-X_logo_2023_%28white%29.png?20230728230735"
+                alt="Twitter"
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <p>2024 OrphanLink. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/hfmanager.js') }}"></script>
+  </body>
+</html>

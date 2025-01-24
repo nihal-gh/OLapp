@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donation Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+      }
+      h1 {
+        text-align: center;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Donation Form</h1>
+    <form action="/submit-specific-donation" method="POST">
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" name="fullName" required />
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" />
+
+      <label for="donationType">Select Donation Type:</label>
+      <select id="donationType" name="donationType" required>
+        <option value="" disabled selected>Select a Type</option>
+        <option value="food">Food</option>
+        <option value="clothes">Clothes</option>
+        <option value="education">Education</option>
+        <option value="occasion">Occasion</option>
+        <option value="other">Other</option>
+      </select>
+
+      <div id="occasionDetails" class="donation-details" style="display: none">
+        <label for="occasionType">Select Occasion:</label>
+        <select id="occasionType" name="occasionType">
+          <option value="" disabled selected>Select an Occasion</option>
+          <option value="birthday">Birthday</option>
+          <option value="wedding">Wedding</option>
+          <option value="remembrance">Annual Remembrance</option>
+          <option value="others">Others</option>
+        </select>
+
+        <label for="occasionDate">Date of Occasion:</label>
+        <input type="date" id="occasionDate" name="occasionDate" />
+      </div>
+
+      <div id="otherDetails" class="donation-details" style="display: none">
+        <label for="otherType">Please specify:</label>
+        <input type="text" id="otherType" name="otherType" />
+      </div>
+
+      <div id="foodDetails" class="donation-details" style="display: none">
+        <label for="foodType">Type of Food:</label>
+        <input type="text" id="foodType" name="foodType" />
+
+        <label for="foodQuantity">Quantity/Weight:</label>
+        <input type="text" id="foodQuantity" name="foodQuantity" />
+
+        <label for="expiryDate">Expiry Date:</label>
+        <input type="date" id="expiryDate" name="expiryDate" />
+      </div>
+
+      <div id="clothesDetails" class="donation-details" style="display: none">
+        <label for="clothingType">Type of Clothing:</label>
+        <input type="text" id="clothingType" name="clothingType" />
+
+        <label for="clothingSize">Size:</label>
+        <input type="text" id="clothingSize" name="clothingSize" />
+
+        <label for="clothingQuantity">Quantity:</label>
+        <input type="text" id="clothingQuantity" name="clothingQuantity" />
+      </div>
+
+      <label for="pickupMethod">Preferred Method:</label>
+      <select id="pickupMethod" name="pickupMethod" required>
+        <option value="pickup">Pickup</option>
+        <option value="drop-off">Drop-off</option>
+      </select>
+
+      <label for="pickupDays">Best Days/Time for Pickup:</label>
+      <input type="text" id="pickupDays" name="pickupDays" />
+
+      <label for="comments">Additional Comments or Special Instructions:</label>
+      <textarea id="comments" name="comments" rows="4"></textarea>
+
+      <label>
+        <input type="checkbox" name="consent" required />
+        I consent to my information being used for the purpose of this donation.
+      </label>
+
+      <button type="submit">Submit Donation</button>
+    </form>
+
+    <script>
+      const donationTypeSelect = document.getElementById("donationType");
+      const foodDetails = document.getElementById("foodDetails");
+      const clothesDetails = document.getElementById("clothesDetails");
+      const otherDetails = document.getElementById("otherDetails");
+      const occasionDetails = document.getElementById("occasionDetails");
+
+      donationTypeSelect.addEventListener("change", function () {
+        if (this.value === "food") {
+          foodDetails.style.display = "block";
+          clothesDetails.style.display = "none";
+          otherDetails.style.display = "none";
+          occasionDetails.style.display = "none";
+        } else if (this.value === "clothes") {
+          foodDetails.style.display = "none";
+          clothesDetails.style.display = "block";
+          otherDetails.style.display = "none";
+          occasionDetails.style.display = "none";
+        } else if (this.value === "other") {
+          foodDetails.style.display = "none";
+          clothesDetails.style.display = "none";
+          otherDetails.style.display = "block";
+          occasionDetails.style.display = "none";
+        } else if (this.value === "occasion") {
+          foodDetails.style.display = "none";
+          clothesDetails.style.display = "none";
+          otherDetails.style.display = "none";
+          occasionDetails.style.display = "block";
+        } else {
+          foodDetails.style.display = "none";
+          clothesDetails.style.display = "none";
+          otherDetails.style.display = "none";
+          occasionDetails.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

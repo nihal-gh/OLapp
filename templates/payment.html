@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Page</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .payment-container {
+        background-color: #fff;
+        width: 400px;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-size: 24px;
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      .tabs {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .tabs button {
+        background: none;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        color: #666;
+        padding: 10px;
+      }
+
+      .tabs button.active {
+        color: #00a4e3;
+        border-bottom: 2px solid #00a4e3;
+      }
+
+      .payment-section {
+        display: none;
+      }
+
+      .payment-section.active {
+        display: block;
+      }
+
+      .icon-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .icon-container img {
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+      }
+
+      .icon-container img:hover {
+        transform: scale(1.1);
+      }
+
+      .pay-button {
+        width: 100%;
+        padding: 15px;
+        background-color: #00a4e3;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      .pay-button:hover {
+        background-color: #008ac3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="payment-container">
+      <h1>Donation Payment</h1>
+      <form action="/process_payment" method="POST" id="payment-form">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="amount">Donation Amount:</label>
+        <input
+          type="number"
+          id="amount"
+          name="amount"
+          value="{{ amount }}"
+          readonly
+        />
+
+        <label for="purpose">Purpose:</label>
+        <input
+          type="text"
+          id="purpose"
+          name="purpose"
+          value="{{ purpose }}"
+          readonly
+        />
+
+        <h1>Select Payment Method</h1>
+        <div class="tabs">
+          <button class="tab-btn active" data-section="upi" type="button">
+            UPI
+          </button>
+          <button class="tab-btn" data-section="cards" type="button">
+            Cards
+          </button>
+          <button class="tab-btn" data-section="netbanking" type="button">
+            NetBanking
+          </button>
+          <button class="tab-btn" data-section="wallets" type="button">
+            Wallet
+          </button>
+          <button class="tab-btn" data-section="paylater" type="button">
+            Pay Later
+          </button>
+        </div>
+
+        <!-- Payment Sections -->
+        <div class="payment-section active" id="upi">
+          <h3>Choose UPI App</h3>
+          <div class="icon-container">
+            <img
+              src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/phonepe-icon.png"
+              alt="PhonePe"
+            />
+            <img
+              src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-pay-icon.png"
+              alt="Gpay"
+            />
+            <img
+              src="https://www.primarymarkets.com/wp-content/uploads/2023/09/Paytm-Circle-Logo.webp"
+              alt="Paytm"
+            />
+          </div>
+        </div>
+
+        <!-- Cards Section -->
+        <div class="payment-section" id="cards">
+          <h3>Choose Your Bank</h3>
+          <div class="bank-list">
+            <select>
+              <option value="">Select Bank</option>
+              <option value="hdfc">HDFC Bank</option>
+              <option value="sbi">State Bank of India</option>
+              <option value="icici">ICICI Bank</option>
+              <option value="axis">Axis Bank</option>
+              <option value="kotak">Kotak Mahindra Bank</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- NetBanking Section -->
+        <div class="payment-section" id="netbanking">
+          <h3>Select Bank for NetBanking</h3>
+          <div class="bank-list">
+            <select>
+              <option value="">Select Bank</option>
+              <option value="hdfc">HDFC Bank</option>
+              <option value="sbi">State Bank of India</option>
+              <option value="icici">ICICI Bank</option>
+              <option value="axis">Axis Bank</option>
+              <option value="kotak">Kotak Mahindra Bank</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Wallet Section -->
+        <div class="payment-section" id="wallets">
+          <h3>Choose Wallet</h3>
+          <div class="icon-container">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/a/ad/PhonePe_Logo.png"
+              alt="PhonePe"
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Paytm_logo.png"
+              alt="Paytm"
+            />
+            <img
+              src="https://download.logo.wine/logo/Paytm/Paytm-Logo.wine.png"
+              alt="MobiKwik"
+            />
+          </div>
+        </div>
+
+        <!-- Pay Later Section -->
+        <div class="payment-section" id="paylater">
+          <h3>Pay Later Options</h3>
+          <div class="bank-list">
+            <select>
+              <option value="">Select Provider</option>
+              <option value="hdfc">HDFC PayLater</option>
+              <option value="icici">ICICI PayLater</option>
+              <option value="axis">Axis PayLater</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Add other sections similarly -->
+
+        <button class="pay-button" type="submit">Proceed to Pay</button>
+      </form>
+    </div>
+
+    <script>
+      const tabs = document.querySelectorAll(".tab-btn");
+      const sections = document.querySelectorAll(".payment-section");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", (event) => {
+          event.preventDefault(); // Prevent form submission
+
+          // Handle tab switching
+          tabs.forEach((btn) => btn.classList.remove("active"));
+          sections.forEach((section) => section.classList.remove("active"));
+
+          tab.classList.add("active");
+          document.getElementById(tab.dataset.section).classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>

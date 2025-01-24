@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Donations</title>
+        <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/teamstyle.css') }}"
+    />
+
+
+    <style>
+      main {
+        flex: 1;
+        padding: 20px;
+      }
+
+      /*page cotainer too keep footer at bottom*/
+      .page-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      /*cards*/
+       
+
+      .card-container {
+        max-width: 85vw;
+        align-items: center;
+        display: flex;
+        padding: 20px 0px;
+        margin: auto;
+      }
+
+      .cards {
+        max-width: 1200px;
+        display: grid;
+        grid-auto-flow: column;
+        padding: 25px 0;
+        list-style: none;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        background: #f3f2f7; /* Updated to match the light color from your palette */
+        border-radius: 15px; /* Adjusted for a more rectangular look */
+        width: 300px; /* Set fixed width for rectangular shape */
+        height: 400px; /* Set fixed height for rectangular shape */
+        scroll-snap-align: start;
+        transition: all 0.5s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow for better appearance */
+      }
+
+      .card:hover {
+        transform: scale(0.98);
+      }
+
+      .icon {
+        width: 100%;
+        height: auto; /* Adjusted to fit better within the card */
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .icon:hover {
+        transform: scale(1.2);
+      }
+
+      .card-title {
+        font-size: 1.2rem;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        color: #292929; /* Dark text color for better readability */
+      }
+
+      .card-sub {
+        font-size: 1rem;
+        color: #949494; /* Slightly lighter text color for subtler information */
+      }
+
+      .card-content {
+        margin-top: 10px;
+        flex-grow: 1;
+      }
+
+      .card-link-wrapper {
+        display: flex;
+        margin-top: auto; /* Adjusted margin for better alignment */
+      }
+
+      .card-link {
+        background: #f25939; /* Primary color for the button */
+        padding: 10px 30px;
+        border-radius: 100px;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      .card-link:hover {
+        background-color: #d24829; /* Darker shade on hover */
+        transform: scale(0.95);
+      }
+
+      .cards::-webkit-scrollbar {
+        height: 12px;
+      }
+
+      .cards::-webkit-scrollbar-thumb {
+        border-radius: 92px;
+        background: #1b6c86; /* Color for the scrollbar thumb */
+      }
+
+      @media (max-width: 700px) {
+        .cards {
+          grid-auto-columns: 100%;
+          grid-gap: 30px;
+        }
+      }
+
+      @media (min-width: 700px) {
+        .cards {
+          grid-auto-columns: calc(33.33% - 20px);
+          grid-gap: 30px;
+        }
+      }
+
+      @media (min-width: 1100px) {
+        .cards {
+          grid-auto-columns: calc(25% - 30px);
+          grid-gap: 40px;
+        }
+      }
+      /* Volunteer Section Styles */
+.volunteer-section {
+  padding: 40px;
+  background: #f0f8ff; /* Light background for contrast */
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1900px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.volunteer-section h2 {
+  color: #1b6886;
+  font-size: 2.5rem; /* Increased font size */
+  margin-bottom: 20px;
+}
+
+.volunteer-section p {
+  color: #292929;
+  font-size: 1.1rem; /* Increased font size */
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.volunteer-section h3 {
+  color: #f25939;
+  font-size: 2rem; /* Increased font size */
+  margin-bottom: 15px;
+}
+
+.volunteer-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  text-align: left;
+}
+
+.volunteer-section li {
+  font-size: 1.1rem; /* Increased font size */
+  color: #292929;
+  margin: 10px 0;
+}
+
+.contact-info {
+  margin-top: 20px;
+  font-size: 1.1rem; /* Increased font size */
+}
+
+.contact-info a {
+  color: #f25939;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+/*donation stats*/
+.donation-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.stat-item {
+    text-align: center;
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#total-people, #total-donated {
+    font-size: 3rem;
+    color: #f25939;  /* Your color scheme */
+}
+
+p{
+  color: #1b6886;
+}
+    </style>
+  </head>
+  <body>
+        <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,700"
+      rel="stylesheet"
+    />
+
+    <div class="page-container">
+      <header>
+        <nav id="fixed-nav">
+          <!-- Logo Container -->
+        <div class="logo-container">
+          <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="Logo"
+          />
+        </div>
+
+          <!-- Navigation Menu -->
+          <ul class="nav-menu">
+            <li><a href="Orphanlink.html">Home</a></li>
+            <li><a href="adoption.html">Adoption</a></li>
+            <li><a href="orphanages.html">Orphanage</a></li>
+            <li><a href="donation-cards.html">Donations</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="login.html" target="_blank">Login</a></li>
+            
+          <li class="donate-button">
+            <a href="donate.html">Donate</a>
+          </li>
+          </ul>
+        </nav>
+      </header>
+      <h2
+        class="playfair-display-font"
+        style="text-align: center; font-size: 40px; color: #1b6886"
+      >
+        Urgent Needs
+      </h2>
+      <div class="donations-container">
+    {% for donation in donations %}
+    <div class="donation-card">
+        <img src="{{ donation.image_url }}" alt="{{ donation.name }}" />
+        <div class="donation-info">
+            <h3 style="font-weight: bolder;">{{ donation.name }}</h3>
+            <p style="font-weight: 900;">{{ donation.details }}</p>
+            <p style="font-weight: 900;">Urgency: {{ donation.urgency }}</p>
+            <div class="card-link-wrapper">
+                <a href="specdono.html" class="card-link">Donate</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div class="donation-stats">
+    <div class="stat-item">
+        <h3 id="total-people">0</h3>
+        <p>Total Donators</p>
+    </div>
+    <div class="stat-item">
+        <h3 id="total-donated">₹0</h3>
+        <p>Total Amount Donated</p>
+    </div>
+</div>
+
+      
+      <!--sponsoring for a child-->
+<div style="padding: 20px; font-family: 'Playfair Display', serif; text-align: center;">
+    <h2 style="color: #1b6886; font-size: 45px;">Sponsor a Child</h2>
+    <p style="color: #292929; font-size: 20px; line-height: 1.6;font-family: 'Poppins',sans-serif; padding-left: 8%;padding-right: 8%;font-weight: 5; ">
+        <b>You can make a significant impact in a child's life without adopting them into your home.<br><br> By sponsoring a child, you can provide for their education,
+         nutrition, healthcare, and basic needs. Your support ensures they receive the essentials for a brighter future, all while staying in the care of their
+          community or orphanage. Join us in changing lives, one sponsorship at a time.</b>
+    </p>
+</div>
+
+    <div class="card-container">
+      <ul class="cards">
+        <li class="card">
+          <article>
+            <div class="row">
+              <div class="column">
+                <img
+                  class="icon"
+                  src="https://www.indiacelebrating.com/wp-content/uploads/Save-Girl-Child.jpg"
+                  alt="Frank Icon"
+                />
+              </div>
+              <div class="column">
+                <h3 class="card-title">Sponsor food for 1 year</h3>
+                <p class="card-sub"></p>
+              </div>
+            </div>
+            <div class="card-content">
+              <p>sposoring food include whole years food for a children</p>
+            </div>
+            <div class="card-link-wrapper">
+              <a href="/payment?amount=35000&purpose=food" class="card-link">₹35000</a>
+            </div>
+          </article>
+        </li>
+        <li class="card">
+          <article>
+            <div class="row">
+              <div class="column">
+                <img
+                  class="icon"
+                  src="https://media.istockphoto.com/id/1667682801/photo/happy-cute-little-indian-girl-child-standing-having-fun-at-summer-park-or-garden.jpg?s=612x612&w=0&k=20&c=ISu9WSDqRUvlRTzhujB_DtqxA5ueNrQSJy3R62tcXa0="
+                  alt="Cohn Icon"
+                />
+              </div>
+              <div class="column">
+                <h3 class="card-title">Sponsor education fees for 1 year</h3>
+                <p class="card-sub"></p>
+              </div>
+            </div>
+            <div class="card-content">
+              <p>this includes tution fees , books...</p>
+            </div>
+            <div class="card-link-wrapper">
+              <a href="/payment?amount=45000&purpose=tution" class="card-link">₹45000</a>
+            </div>
+          </article>
+        </li>
+        <li class="card">
+          <article>
+            <div class="row">
+              <div class="column">
+                <img
+                  class="icon"
+                  src="https://www.transformationpartners.nhs.uk/wp-content/uploads/2023/10/AdobeStock_519793439-scaled.jpeg"
+                  alt="Frank Icon"
+                />
+              </div>
+              <div class="column">
+                <h3 class="card-title">Sponsor operation cost</h3>
+                <p class="card-sub"></p>
+              </div>
+            </div>
+            <div class="card-content">
+              <p>Urgent operational costs for </br> Children </p>
+            </div>
+            <div class="card-link-wrapper">
+              <a href="/payment?amount=145000&purpose=operation" class="card-link">₹145000</a>
+            </div>
+          </article>
+        </li>
+        <li class="card">
+          <article>
+            <div class="row">
+              <div class="column">
+                <img
+                  class="icon"
+                  src="https://indianorphanage.com/io/wp-content/uploads/2020/05/indian-orphanage-children-5757.jpg"
+                  alt="Cohn Icon"
+                />
+              </div>
+              <div class="column">
+                <h3 class="card-title">Sponsor child adoption</h3>
+                <p class="card-sub"></p>
+              </div>
+            </div>
+            <div class="card-content">
+              <p>this pay all the bills of child for lifetime (pay annually)</p>
+            </div>
+            <div class="card-link-wrapper">
+              <a href="/payment?amount=300000&purpose=lifetime" class="card-link">₹300000</a>
+            </div>
+          </article>
+        </li>
+        <li class="card">
+          <article>
+            <div class="row">
+              <div class="column">
+                <img class="icon" src="kid.jpeg" alt="Frank Icon" />
+              </div>
+              <div class="column">
+                <h3 class="card-title">John Doe</h3>
+                <p class="card-sub"></p>
+              </div>
+            </div>
+            <div class="card-content">
+              <p>enim ad minim veniam.</p>
+            </div>
+            <div class="card-link-wrapper">
+              <a href="/payment?amount=1&purpose=lifetime" class="card-link">₹1</a>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </div>
+    <!-- Volunteer Section -->
+<!-- Looking for Volunteers Section -->
+ 
+<section class="volunteer-section">
+  <h2>Looking to Volunteer?</h2>
+  <p style="font-weight: bold;padding-left: 3%;padding-right: 3%;">
+    More and more these days, people are looking for ways to volunteer in India.<br> There is something about this country that appeals to those wanting to make a difference in the world.
+    <br>
+    There are countless ways that visitors and volunteers can help out at our orphanage. Occasionally, things go so well that volunteers return time and again… some even end up joining us on staff.
+    <br><br>
+    We prefer to individually work out a timetable for each visitor that fits in with our children’s home duties, school, and tuition timetables.
+  </p>
+  <h3>Volunteer Work</h3>
+  <ul style="text-align: left;font-weight: bold;list-style-type: circle;margin-left: 40%;">
+    <li>Reading to children / Library management</li>
+    <li>Helping out on the farm/workshop</li>
+    <li>Painting & construction</li>
+    <li>Gardening & landscaping</li>
+    <li>Website Maintenance </li>
+    <li>Running activities/games</li>
+    <li>Cooking or cleaning</li>
+  </ul>
+  <p style="font-weight: bolder;" class="contact-info">
+    If you’re interested in volunteering with us, please send your resume to: <a href="mailto:yashdevineni7@gmail.com">yashdevineni7@gmail.com</a>
+  </p>
+</section>
+
+
+
+      <!--footer-->
+      <footer style="margin-top: auto">
+        <div class="footer-content">
+          <div class="footer-left">
+            <p>Contact Us: +91 9502188485</p>
+            <p>
+              Mail us: <a href="mailto:yashdevineni7@gmail.com">yashwanth</a>
+            </p>
+          </div>
+          <div class="footer-middle">
+            <div class="social-media">
+              <a href="https://www.instagram.com" target="_blank">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                  alt="Instagram"
+                  width="24"
+                  height="24"
+                />
+              </a>
+              <a href="https://www.twitter.com" target="_blank">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/X_logo_2023_%28white%29.png/900px-X_logo_2023_%28white%29.png?20230728230735"
+                  alt="Twitter"
+                  width="24"
+                  height="24"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="footer-right">
+            <p>2024 OrphanLink. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/hfmanager.js') }}" >
+
+    </script>
+  </body>
+</html>
